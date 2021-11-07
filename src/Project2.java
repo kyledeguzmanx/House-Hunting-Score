@@ -13,52 +13,48 @@ public class Project2 {
 			numValues = scanner.nextInt();	
 			int[] startArr = new int[numValues];
 			int[] endArr = new int[numValues];
+			int total =0;
 			
 			 //INPUT TEXT FILE TO ARRAY
 			for(int i=0; i < numValues; i++) {
-					startArr[i] = scanner.nextInt();
+				startArr[i] = scanner.nextInt();
+				endArr[i] = 1;		
 			}
 			
-			for(int i=0; i<numValues;i++) {
-				endArr[i] = startArr[i];
-				if(startArr[i]==0) endArr[i]=1;
-				
-			}
-			
-			/*
-			 * ALL VALUES MUST BE AN INTEGER
-			 * ALL VALUES MUST BE AT LEAST 1
-			 * if rating i is higher than the rating i - 1 then value i must be higher than value i - 1
-			 *if rating i is higher than rating i + 1 then value i must be greater than value i + 1
-			 * */
 			  
 			for(int i=0; i <numValues;i++) {
-				if((i-1) >= 0) {
-					if(endArr[i]>endArr[i-1]) {
-						endArr[i] = endArr[i-1]+1;
-					}
+				if(i==0) {
+					if(startArr[i]>startArr[i+1])	
+						endArr[i]++;
 				}
-				if((i+1) != numValues) {
-					if(endArr[i]>endArr[i+1]) {
-						endArr[i] = endArr[i+1]+1;
+				else if(i==numValues-1) {
+					if(startArr[i] > startArr[i-1]) 
+						endArr[i]= endArr[i-1] + 1;
+				}
+				else {
+					if(startArr[i] > startArr[i-1] || startArr[i] > startArr[i+1]) {
+						endArr[i] = endArr[i-1] + 1;
 					}
+					
 				}
 			}
-			System.out.print("N= " + numValues + "\nOriginal Array:  ");
+			
+			//PRINT
+			System.out.println("Original Array: ");
 			for(int i=0; i <numValues;i++) {
 				System.out.print(startArr[i] + " ");
 			}
-			System.out.print("\nResult Array:  ");
+			
+			System.out.println("\nNew Array: ");
 			for(int i=0; i <numValues;i++) {
 				System.out.print(endArr[i] + " ");
-				sum += endArr[i];
+				total += endArr[i];
 			}
-			System.out.println("\nSum: "+sum);
-			
-			
-			
-			
+			System.out.print("\nSum: " + total);
 		}
+		
+			
+			
 		 catch (FileNotFoundException e) {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
