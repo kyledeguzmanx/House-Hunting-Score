@@ -40,14 +40,15 @@ public class Project2 {
 			}
 			
 			//PRINT
-			System.out.println("Original Array: ");
+			/*System.out.println("Original Array: ");
 			for(int i=0; i <numValues;i++) {
 				System.out.print(startArr[i] + " ");
 			}
 			
 			System.out.println("\nNew Array: ");
+			*/
 			for(int i=0; i <numValues;i++) {
-				System.out.print(endArr[i] + " ");
+				//System.out.print(endArr[i] + " ");
 				total += endArr[i];
 			}
 			System.out.print("\nSum: " + total);
